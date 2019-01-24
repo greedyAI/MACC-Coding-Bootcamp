@@ -9,17 +9,17 @@ public class Map {
 	public GameObject[][] mapObjects;
 
 	// Constructor that instantiates our 2D member arrays and calls the generateMap function to actually generate the map.
-	public Map(int width, int height, int courtWidth, int courtHeight, Player player1, Player player2) {
+	public Map(int width, int height, int arenaWidth, int arenaHeight, Player player1, Player player2) {
 		this.height = height;
 		this.width = width;
 		map = new Color[height][width];
 		mapObjects = new GameObject[height][width];
-		generateMap(courtWidth, courtHeight, player1, player2);
+		generateMap(arenaWidth, arenaHeight, player1, player2);
 	}
 
 	// TODO: (Challenge!) Generates a random map by filling "Color[][] map" up with colors of every block in your map, and filling up
 	// "GameObject[][] mapObjects" with a GameObject for each non-empty terrain block in your map (eg. walls/water/ice...etc.).
-	private void generateMap(int courtWidth, int courtHeight, Player player1, Player player2) {
+	private void generateMap(int arenaWidth, int arenaHeight, Player player1, Player player2) {
 
 	}
 

@@ -7,17 +7,17 @@ public class Map {
 	public Color[][] map;
 	public GameObject[][] mapObjects;
 
-	public Map(int width, int height, int courtWidth, int courtHeight, Player player1, Player player2) {
+	public Map(int width, int height, int arenaWidth, int arenaHeight, Player player1, Player player2) {
 		this.height = height;
 		this.width = width;
 		map = new Color[height][width];
 		mapObjects = new GameObject[height][width];
-		generateMap(courtWidth, courtHeight, player1, player2);
+		generateMap(arenaWidth, arenaHeight, player1, player2);
 	}
 
 	// Generates a random map with caves/ice based on cellular automata. May end up with the two players being disconnected from each other.
 	// To solve this, a BFS or A*-style algorithm may be needed, but is omitted from the code for pedagogical purposes.
-	private void generateMap(int courtWidth, int courtHeight, Player player1, Player player2) {
+	private void generateMap(int arenaWidth, int arenaHeight, Player player1, Player player2) {
 		int THRESHOLD_A = 5; // Number of walls around current cell needed to become a wall (empty -> wall)
 		int THRESHOLD_B = 5; // Number of walls around current cell needed to remain a wall (wall -> wall)
 		int THRESHOLD_C = 0; // Max number of walls around current cell allowed to become a wall (empty -> wall)
@@ -114,10 +114,9 @@ public class Map {
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				if (map[i][j].equals(Color.BLACK) || map[i][j].equals(new Color(137, 207, 240))) {
-					mapObjects[i][j] = new GameObject(courtWidth, courtHeight, 0, 0, (int) screenSize.getWidth() * j / width,
-							(int) screenSize.getHeight() * i / height,
-							(int) screenSize.getWidth() * (j + 1) / width - (int) screenSize.getWidth() * j / width,
-							(int) screenSize.getHeight() * (i + 1) / height - (int) screenSize.getHeight() * i / height, -1);
+					mapObjects[i][j] = new GameObject(arenaWidth, arenaHeight, 0, 0, arenaWidth * j / width,
+							arenaHeight * i / height, arenaWidth * (j + 1) / width - arenaWidth * j / width,
+							arenaHeight * (i + 1) / height - arenaHeight * i / height, -1);
 				}
 			}
 		}

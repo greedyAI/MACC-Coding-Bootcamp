@@ -28,10 +28,10 @@ public class Game implements Runnable {
 		frame.setVisible(true);
 
 		// Instantiate and display our arena
-		final Arena court = new Arena();
-		frame.setContentPane(court);
+		final Arena arena = new Arena();
+		frame.setContentPane(arena);
 		frame.validate();
-		court.reset();
+		arena.reset();
 	}
 
 	// Main method that launches the game
